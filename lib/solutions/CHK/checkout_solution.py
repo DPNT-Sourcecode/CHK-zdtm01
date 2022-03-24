@@ -46,5 +46,3 @@ def build_orders(orders):
         quantity += 1
         order_dict.update({order.upper(): quantity})
     return order_dict
-
-
