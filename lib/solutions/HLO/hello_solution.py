@@ -4,8 +4,4 @@
 # friend_name = unicode string
 
 def hello(friend_name):
-    #return 'hello' + ' ' + friend_name
-    return "Hello, World!"
-    #raise NotImplementedError()
-
-
+    return 'Hello, ' + str(friend_name[0])+'!'
