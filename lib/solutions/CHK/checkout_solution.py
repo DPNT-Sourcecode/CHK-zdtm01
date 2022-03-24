@@ -27,6 +27,3 @@ def checkout(skus):
         return running_total
     except Exception as e:
         return -1
-
-
-
