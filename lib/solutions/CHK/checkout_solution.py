@@ -21,11 +21,12 @@ def checkout(skus):
             if units >= offer:
                 offer_quantity = int(units / int(offer))
                 running_total += offers[1] * offer_quantity
-                units -= offer_quantity
+                units -= offer_quantity * units
         amount = units * item['Price']
         running_total += amount
         return running_total
     except Exception as e:
         return -1
+
 
 
