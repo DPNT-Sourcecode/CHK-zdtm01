@@ -11,8 +11,7 @@ price_table = { 'A': {'Price': 50, 'Offers': ['3A', 130]},
 
 
 def checkout(skus):
-    # try:
-    if skus.isalpha() or skus == '':
+    if (skus.isalpha() or skus == '') and skus.isupper():
         order_dict = build_orders(skus)
         running_total = 0
         for order in order_dict:
@@ -22,14 +21,13 @@ def checkout(skus):
     else:
         return -1
 
-
 def get_price(stock, units):
     try:
         item = price_table.get(stock)
         running_total = 0
         offers = item.get('Offers', [])
-        offer = int(offers[0][0])
-        if offers != []:
+        if item.get('Offers', []) != []:
+            offer = int(offers[0][0])
             if units >= offer:
                 offer_quantity = int(units / int(offer))
                 running_total += (offers[1] * offer_quantity)
@@ -48,3 +46,4 @@ def build_orders(orders):
         quantity += 1
         order_dict.update({order.upper(): quantity})
     return order_dict
+
