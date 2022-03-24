@@ -16,9 +16,10 @@ def checkout(skus):
         item = price_table.get(stock)
         running_total = 0
         offers = item.get('Offers', [])
-        if offers != []:
-            if units >= offers[0][0]:
-                offer_quantity = int(units/offers[0][0])
+        offer = int(item.get('Offers', [])[0][0])
+        if item.get('Offers', []) != []:
+            if units >= offer:
+                offer_quantity = int(units / int(offer))
                 running_total += offers[1] * offer_quantity
                 units -= offer_quantity
         amount = units * item['Price']
@@ -26,4 +27,5 @@ def checkout(skus):
         return running_total
     except Exception as e:
         return -1
+
 
