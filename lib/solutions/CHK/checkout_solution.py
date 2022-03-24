@@ -10,4 +10,20 @@ price_table = { 'A': {'Price': 50, 'Offers': ['3A', 130]},
                }
 
 def checkout(skus):
-    raise NotImplementedError()
+    try:
+        stock = skus[1]
+        units = skus[0]
+        item = price_table.get(stock)
+        running_total = 0
+        offers = item.get('Offers', [])
+        if offers != []:
+            if units >= offers[0][0]:
+                offer_quantity = int(units/offers[0][0])
+                running_total += offers[1] * offer_quantity
+                units -= offer_quantity
+        amount = units * item['Price']
+        running_total += amount
+        return running_total
+    except Exception as e:
+        return -1
+
