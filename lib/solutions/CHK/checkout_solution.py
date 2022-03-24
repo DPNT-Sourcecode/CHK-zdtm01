@@ -11,6 +11,3 @@ price_table = { 'A': {'Price': 50, 'Offers': ['3A', 130]},
 
 def checkout(skus):
     raise NotImplementedError()
-
-
-
