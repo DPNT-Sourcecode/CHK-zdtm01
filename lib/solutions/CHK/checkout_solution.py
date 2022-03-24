@@ -11,7 +11,7 @@ price_table = { 'A': {'Price': 50, 'Offers': ['3A', 130]},
 
 
 def checkout(skus):
-    if (skus.isalpha() or skus == '') and skus.isupper():
+    if ((skus.isalpha() and skus.isupper()) or skus == ''):
         order_dict = build_orders(skus)
         running_total = 0
         for order in order_dict:
@@ -46,4 +46,5 @@ def build_orders(orders):
         quantity += 1
         order_dict.update({order.upper(): quantity})
     return order_dict
+
 
